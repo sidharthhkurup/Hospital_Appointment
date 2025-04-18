@@ -1,0 +1,54 @@
+input{
+    padding: 10px 20px 10px 20px;
+    margin: 10px 10px 10px 10px;
+}
+
+.head{
+    color: white;
+    font-size:x-large;
+    font-weight: bold;
+}
+
+
+table{
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
+th{
+
+        background-color: #18667c;
+        color: white;
+    padding: 10px 10px 10px 10px;
+}
+
+td{
+
+    padding: 10px 10px 10px 10px;
+}
+tr:nth-child(odd) {
+    background-color: #22acce;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #2e8592;
+    color: white;
+}
+.subbody{
+    text-align: center;
+    backdrop-filter: blur(10px);
+
+}
+body{
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+    background-image: url('hsptl.jpg');
+
+}
+.blr_div{
+
+
+
+}
