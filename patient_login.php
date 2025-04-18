@@ -1,8 +1,14 @@
-<form method="post">   
-Username <input type="text" name="username" required>
-Password <input type="password" name="password" required>
-<input type="submit" name="submit" value="SUBMIT">
-<input type="submit" name="create" value="Create new Account">
+</html>
+<head><title>Hospital Booking</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+<body>
+   <div class="subbody">
+<form method="post">   <br>
+<div class="para">Username</div> <input type="text" name="username" required><br>
+<div class="para">Password</div> <input type="password" name="password" required><br>
+<input type="submit" name="submit" value="SIGN IN">
+<input type="submit" name="create" value="SIGN UP">
 </form>
 
 <?php
@@ -43,3 +49,6 @@ exit;
   }
 }
 ?>
+</div>
+</body>
+</html>

@@ -1,7 +1,11 @@
+</html>
+<head><title>Hospital Booking</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
 <body>
    <div class="subbody">
 <?php
-echo "<link rel='stylesheet' type='text/css' href='style.css'>"; 
+echo ""; 
 $con=new mysqli("localhost","root","","hospital_booking");
 
 session_start();
@@ -26,12 +30,13 @@ if($result -> num_rows < 1)
 else{
   
    echo "<table>" ;
-   echo "<tr><th>First Name</th><th>Second Name</th><th>Date of Birth</th><th>Address<th>Mobile Number</th><th>Email </th> <th>Username </th><th>Password </th><th></th><th></th></tr>";
+   echo "<tr><th>First Name</th><th>Second Name</th><th>Date of Birth</th><th>Gender</th><th>Address<th>Mobile Number</th><th>Email </th> <th>Username </th><th>Password </th><th>Edit</th><th>Delete</th></tr>";
    while($row=$result -> fetch_assoc()){
 
 echo "<tr><td>". $row['patfname'] . "</td>";
 echo "<td>". $row['patsname'] . "</td>";
 echo "<td>". $row['patdob'] . "</td>";
+echo "<td>". $row['gender'] . "</td>";
 echo "<td>". $row['pataddress'] . "</td>";
 echo "<td>". $row['patmob'] . "</td>";
 echo "<td>". $row['patemail'] . "</td>";
@@ -40,7 +45,7 @@ echo "<td>". $row['password'] . "</td>";
 echo "<td ><form method='post'><input type='hidden' name='patid' value='". $row['patid'] ."'><input type='submit' name='patedit' value='EDIT'></form></td>";
 echo "<td><form method='post'><input type='hidden' name='patid' value='". $row['patid'] ."'><input type='submit' name='patdelete' value='DELETE'></form></td></tr>";
 }
-  echo "</table>";
+  echo "</table><br>";
   }
 
   $sqld="select * from doctor_details";
@@ -54,33 +59,34 @@ echo "<td><form method='post'><input type='hidden' name='patid' value='". $row['
   else{
     
      echo "<table>" ;
-     echo "<tr><th>First Name</th><th>Second Name</th><th>Date of Joining </th><th>Specialization</th><th>Address<th>Mobile Number</th><th>Email </th> <th>Username </th><th>Password </th> <th></th><th></th></tr>";
+     echo "<tr><th>First Name</th><th>Second Name</th><th>Date of Joining </th><th>Specialization</th><th>Gender</th><th>Address<th>Mobile Number</th><th>Email </th> <th>Username </th><th>Password </th> <th>Edit</th><th>Delete</th></tr>";
      while($row=$result -> fetch_assoc()){
   
   echo "<tr ><td>". $row['docfname'] . "</td>";
   echo "<td>". $row['docsname'] . "</td>";
   echo "<td>". $row['docdoj'] . "</td>";
   echo "<td>". $row['special'] . "</td>";
+  echo "<td>". $row['gender'] . "</td>";
   echo "<td>". $row['docaddress'] . "</td>";
   echo "<td>". $row['docmob'] . "</td>";
-  echo "<td>". $row['docmob'] . "</td>";
+  echo "<td>". $row['docemail'] . "</td>";
   echo "<td>". $row['username'] . "</td>";
   echo "<td>". $row['password'] . "</td>";
   echo "<td ><form method='post'><input type='hidden' name='docid' value='". $row['docid'] ."'><input type='submit' name='docedit' value='EDIT'></td>";
   echo "<td><form method='post'><input type='hidden' name='docid' value='". $row['docid'] ."'><input type='submit' name='docdelete' value='DELETE'></form></td></tr>";
   }
-    echo "</table>";
+    echo "</table><br>";
     }
     
     
-    echo "<form method='post'><input type='submit' name='create' value='Create new Account'></form><br>";
-    echo "<div class='head'>Appointment Details</div>";
+    echo "<form method='post'><input type='submit' name='create' value='Create Doctor Account'></form><br>";
+    echo "<div class='head'>Appointment Details</div><br>";
     $sqla="SELECT p.patfname,p.patsname,d.docfname,d.docsname, a.apdate, a.slot FROM appointment_details AS a JOIN patient_details AS p ON a.patid = p.patid JOIN doctor_details AS d ON a.docid = d.docid";
     
     $result=$con->query($sqla);
     
     if($result -> num_rows < 1)
-    echo "No Appointments Available";
+    echo "No Appointments Available<br><br>";
     else
     {
     
@@ -98,11 +104,11 @@ echo "<td><form method='post'><input type='hidden' name='patid' value='". $row['
     
     echo "<td>". $slot . "</td></tr>";
     }
-      echo "</table>";
+      echo "</table><br><br>";
     
     }
     
-    echo "<form method='post'><input type='submit' name='logout' value='LOGOUT'></form><br>";
+    echo "<br><form method='post'><input type='submit' name='logout' value='LOGOUT'></form><br>";
 
     if(isset($_POST['logout'])){
       session_destroy();
@@ -154,3 +160,4 @@ echo "<td><form method='post'><input type='hidden' name='patid' value='". $row['
 ?>
 </div>
 </body>
+</html>

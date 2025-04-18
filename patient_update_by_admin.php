@@ -1,3 +1,10 @@
+<html>
+  <head><title>Hospital Booking</title>
+  <link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+<body>
+<div class="subbody">
+<div class="head">UPDATE PATIENT DETAILS</div><br><br>
 <?php
 session_start();
 $id=$_SESSION['my_value'];
@@ -21,7 +28,7 @@ while($row=$result -> fetch_assoc()){
 
 }
 
-echo "<h1>Update</h1>";
+
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
 
@@ -62,6 +69,10 @@ else {
 <tr><td>Username </td><td><input type="text" name="username" value="<?php echo $username; ?>" required></td></tr>
 <tr><td>Password </td><td><input type="password" name="password" value="<?php echo $password; ?>" required></td></tr>
 <tr><td>Confirm Password </td><td><input type="password" name="con_password" value="<?php echo $password; ?>" required></td></tr>
-<tr><td><input type="submit" value="SUBMIT"></td><td></td></tr>
 </table>
+<input type="submit" value="SUBMIT"><br><br>
+
 </form>
+</div>
+</body>
+  </html>

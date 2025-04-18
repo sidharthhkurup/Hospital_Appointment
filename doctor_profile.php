@@ -1,3 +1,9 @@
+</html>
+<head><title>Hospital Booking</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+<body>
+   <div class="subbody">
 <?php
 
 echo "<link rel='stylesheet' type='text/css' href='style.css'>"; 
@@ -29,31 +35,32 @@ else{
    echo "<form method='post'>";
    echo "<table border='1'>" ;
    while($row=$result -> fetch_assoc()){
-      echo "<h2> Hey ". $row['docfname'] .",</h2> " ;
+      echo "<div class='head'>Profile</div> " ;
 echo "<tr><td>First Name</td><td>". $row['docfname'] . "</td></tr>";
 echo "<tr><td>Second Name</td><td>". $row['docsname'] . "</td></tr>";
 echo "<tr><td>Specialization </td><td>". $row['special'] . "</td></tr>";
-echo "<tr><td>doj </td><td>". $row['docdoj'] . "</td></tr>";
+echo "<tr><td>Gender </td><td>". $row['gender'] . "</td></tr>";
+echo "<tr><td>Date of Joining </td><td>". $row['docdoj'] . "</td></tr>";
 echo "<tr><td>Address </td><td>". $row['docemail'] . "</td></tr>";
 echo "<tr><td>Mobile Number</td><td>". $row['docaddress'] . "</td></tr>";
 echo "<tr><td>Email </td><td>". $row['docmob'] . "</td></tr>";
 echo "<tr><td>Username </td><td>". $row['username'] . "</td></tr>";
 echo "<tr><td>Password </td><td>". $row['password'] . "</td></tr>";
 echo "</table>";
-echo "<input type='submit' name='edit' value='EDIT DETAILS'><br>";
+echo "<input type='submit' name='edit' value='EDIT DETAILS'>";
 echo "<input type='submit' name='logout' value='LOGOUT'>";
  echo "</form>";
 
 }
 
 
-echo "<h3>Hey Doctor, Please find your appointment details below</h3>";
+echo "<div class='para'>Hey Doctor, Please find your appointment details below</div>";
 $sqla="SELECT b.patfname,b.patsname,b.patmob, a.apdate, a.slot FROM appointment_details AS a JOIN patient_details AS b ON b.patid = a.patid WHERE (a.docid=".$id.") and (a.apdate > date(".date('Y-m-d')."))";
 
 $result=$con->query($sqla);
 
 if($result -> num_rows < 1)
-echo "No Appointments Available";
+echo "<div class='para'>No Appointments Available</div>";
 else
 {
 
@@ -84,10 +91,13 @@ if(isset($_POST['logout'])){
 
 
 if (isset($_POST['edit'])) {
-   header("Location: docient_update.php");
+   header("Location: doctor_update.php");
    exit;
 }
 
 
 }
 ?>
+</div>
+</body>
+</html>

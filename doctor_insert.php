@@ -1,4 +1,10 @@
-
+</html>
+<head><title>Hospital Booking</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+<body>
+   <div class="subbody">
+   <div class="head">Enter the Details</div>
 <?php
 session_start();
 if($_SESSION['my_value']==null)
@@ -19,6 +25,7 @@ if($_POST["password"] == $_POST["con_password"]) {
   $fname=$_POST["fname"];
   $sname=$_POST["sname"];
   $doj=$_POST["doj"];
+  $gender=$_POST["gender"];
   $mob=$_POST["mob"];
   $email=$_POST["email"];
   $special=$_POST["special"];
@@ -27,7 +34,7 @@ if($_POST["password"] == $_POST["con_password"]) {
   $password=$_POST["password"];
   
 
-  $sql="insert into doctor_details (docfname,docsname,docdoj,docmob,docemail,docaddress,username,password,special)values('" . $fname . "','" . $sname . "','" . $doj ."'," . $mob .",'" . $email ."','" . $address ."','" . $username . "','" . $password. "','" . $special. "')";
+  $sql="insert into doctor_details (docfname,docsname,docdoj,docmob,docemail,docaddress,username,password,special,gender)values('" . $fname . "','" . $sname . "','" . $doj ."'," . $mob .",'" . $email ."','" . $address ."','" . $username . "','" . $password. "','" . $special. "','" . $gender. "')";
 
 if($CON->query($sql) == FALSE)
 die ("Unable to insert");
@@ -47,13 +54,16 @@ else {
 <tr><td>First Name</td><td><input type="text" name="fname" required></td></tr>
 <tr><td>Second Name</td><td><input type="text" name="sname" required></td></tr>
 <tr><td>Date of joining </td><td><input type="date" name="doj" required></td></tr>
-<tr><td>Address </td><td><input type="text" name="address" required></td></tr>
 <tr><td>Specialization </td><td><input type="text" name="special" required></td></tr>
+<tr><td>Gender </td><td><input type='radio' name='gender' value='Male' checked>Male  <input type='radio' name='gender' value='Female'> Female</td></tr>
+<tr><td>Address </td><td><input type="text" name="address" required></td></tr>
 <tr><td>Mobile Number</td><td><input type="text" name="mob" required></td></tr>
 <tr><td>Email </td><td><input type="text" name="email" required></td></tr>
 <tr><td>Username </td><td><input type="text" name="username" required></td></tr>
 <tr><td>Password </td><td><input type="password" name="password" required></td></tr>
 <tr><td>Confirm Password </td><td><input type="password" name="con_password" required><?php echo $error; ?></td></tr>
-<tr><td><input type="submit" value="SUBMIT"></td><td></td></tr>
-</table>
+</table><input type="submit" value="SUBMIT">
 </form>
+</div>
+</body>
+</html>

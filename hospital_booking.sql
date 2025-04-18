@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2025 at 12:25 PM
+-- Generation Time: Apr 18, 2025 at 08:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,6 +53,14 @@ CREATE TABLE `appointment_details` (
   `slot` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `appointment_details`
+--
+
+INSERT INTO `appointment_details` (`apid`, `docid`, `patid`, `apdate`, `slot`) VALUES
+(20, 1, 15, '2025-04-24', 'Afternoon'),
+(21, 6, 16, '2025-05-01', 'Afternoon');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +72,7 @@ CREATE TABLE `doctor_details` (
   `docfname` varchar(20) NOT NULL,
   `docsname` varchar(20) NOT NULL,
   `docemail` varchar(30) NOT NULL,
+  `gender` varchar(10) NOT NULL,
   `docmob` bigint(10) NOT NULL,
   `docaddress` varchar(20) NOT NULL,
   `docdoj` date NOT NULL,
@@ -76,9 +85,10 @@ CREATE TABLE `doctor_details` (
 -- Dumping data for table `doctor_details`
 --
 
-INSERT INTO `doctor_details` (`docid`, `docfname`, `docsname`, `docemail`, `docmob`, `docaddress`, `docdoj`, `username`, `password`, `special`) VALUES
-(1, 'Ruban', 'george', 'ruban@gmail', 9446189371, 'AHouse', '2025-04-01', 'ruban11', '1234', 'Cardiologist'),
-(4, 'Sam', 'Abraham', 'sam@gmail.com', 987654321, 'Sam House', '2025-04-02', 'sam123', 'sampass', 'Oncologist');
+INSERT INTO `doctor_details` (`docid`, `docfname`, `docsname`, `docemail`, `gender`, `docmob`, `docaddress`, `docdoj`, `username`, `password`, `special`) VALUES
+(1, 'Ruban', 'george', 'ruban@gmail', 'Male', 9446189371, 'AHouse', '2025-04-01', 'ruban11', '1234', ''),
+(4, 'Sam', 'Abraham', 'sam@gmail.com', 'Male', 987654321, 'Sam House', '2025-04-02', 'sam123', 'sampass', 'Oncologist'),
+(6, 'Seema', 'A', 'seema@gmail.com', 'Female', 6789054321, 'Seema house', '2025-04-01', 'seema123', 's123', 'Nephrology');
 
 -- --------------------------------------------------------
 
@@ -91,6 +101,7 @@ CREATE TABLE `patient_details` (
   `patfname` varchar(20) NOT NULL,
   `patsname` varchar(20) NOT NULL,
   `patdob` date NOT NULL,
+  `gender` varchar(10) NOT NULL,
   `patemail` varchar(30) NOT NULL,
   `patmob` int(10) NOT NULL,
   `pataddress` varchar(40) NOT NULL,
@@ -102,8 +113,10 @@ CREATE TABLE `patient_details` (
 -- Dumping data for table `patient_details`
 --
 
-INSERT INTO `patient_details` (`patid`, `patfname`, `patsname`, `patdob`, `patemail`, `patmob`, `pataddress`, `username`, `password`) VALUES
-(1, 'Tovino', 'Thomas', '1976-04-21', 'tovi@gmail.com', 1234567890, 'TovinoVilla', 'tovi123', 'suma1');
+INSERT INTO `patient_details` (`patid`, `patfname`, `patsname`, `patdob`, `gender`, `patemail`, `patmob`, `pataddress`, `username`, `password`) VALUES
+(1, 'Nivin', 'Thomas', '1976-04-21', 'Male', 'nivi@gmail.com', 1234567890, 'NivinVilla', 'nivi123', 'suma1'),
+(15, 'Sooraj', 'Santhosh', '2025-04-09', 'Male', 'sooraj@gmail', 1146189371, 'Sooraj House', 'soor11', 'soor123'),
+(16, 'Sneha', 'Susan', '2025-02-05', 'Female', 'sneha@gmail.com', 987654321, 'Snehavilla', 'sneha123', 's12345');
 
 --
 -- Indexes for dumped tables
@@ -135,19 +148,19 @@ ALTER TABLE `patient_details`
 -- AUTO_INCREMENT for table `appointment_details`
 --
 ALTER TABLE `appointment_details`
-  MODIFY `apid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `apid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `doctor_details`
 --
 ALTER TABLE `doctor_details`
-  MODIFY `docid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `docid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `patient_details`
 --
 ALTER TABLE `patient_details`
-  MODIFY `patid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `patid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

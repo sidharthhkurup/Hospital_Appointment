@@ -1,6 +1,10 @@
-
+<html>
+<head><title>Hospital Booking</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+<body>
+   <div class="subbody">
 <?php
-echo "<link rel='stylesheet' type='text/css' href='style.css'>"; 
 session_start();
 if($_SESSION['my_value']==null)
 {
@@ -26,20 +30,21 @@ else{
    echo "<form method='post'>";
    echo "<table border='1'>" ;
    while($row=$result -> fetch_assoc()){
-      echo "<h2> Hey ". $row['patfname'] .",</h2> " ;
+      echo "<div class='head'> Hey ". $row['patfname'] .",</div> " ;
 echo "<tr><td>First Name</td><td>". $row['patfname'] . "</td></tr>";
 echo "<tr><td>Second Name</td><td>". $row['patsname'] . "</td></tr>";
 echo "<tr><td>DOB </td><td>". $row['patdob'] . "</td></tr>";
+echo "<tr><td>Gender </td><td>". $row['gender'] . "</td></tr>";
 echo "<tr><td>Address </td><td>". $row['patemail'] . "</td></tr>";
 echo "<tr><td>Mobile Number</td><td>". $row['pataddress'] . "</td></tr>";
 echo "<tr><td>Email </td><td>". $row['patmob'] . "</td></tr>";
 echo "<tr><td>Username </td><td>". $row['username'] . "</td></tr>";
 echo "<tr><td>Password </td><td>". $row['password'] . "</td></tr>";
 echo "</table>";
-echo "<input type='submit' name='edit' value='EDIT DETAILS'><br>";
-echo "<input type='submit' name='delete' value='DELETE'><br>";
-echo "<input type='submit' name='logout' value='LOGOUT'><br>";
-echo "<input type='submit' name='appoint' value='BOOK APPOINTMENT'><br>";
+echo "<input type='submit' name='appoint' value='BOOK APPOINTMENT'>";
+echo "<input type='submit' name='edit' value='EDIT DETAILS'>";
+echo "<input type='submit' name='delete' value='DELETE'>";
+echo "<input type='submit' name='logout' value='LOGOUT'>";
  echo "</form>";
 
 
@@ -49,20 +54,20 @@ echo "<input type='submit' name='appoint' value='BOOK APPOINTMENT'><br>";
       $sqld="delete from appointment_details where patid = " . $id ;
       $con -> query($sqld);
       session_destroy();
-      echo "<script> alert('Account deleted') </script>";
+      echo "<script> alert('Account Deleted') </script>";
       header("Location: patient_login.php");
       exit;
    }
 }
 
 
-echo "<h2>Appointment Details</h2>";
+echo "<div class='head'>Appointment Details</div>";
 $sqla="SELECT b.docfname,b.docsname,b.docmob, a.apdate, a.slot FROM appointment_details AS a JOIN doctor_details AS b ON b.docid = a.docid WHERE a.patid=".$id." and (a.apdate > date(".date('Y-m-d')."))";
 
 $result=$con->query($sqla);
 
 if($result -> num_rows < 1)
-echo "No Appointments Available";
+echo "<div class='para'>No Appointments Available</div>";
 else
 {
 
@@ -102,3 +107,7 @@ if (isset($_POST['appoint'])) {
 
 }
 ?>
+
+</div>
+</body>
+</html>

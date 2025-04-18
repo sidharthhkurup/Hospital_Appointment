@@ -1,14 +1,22 @@
 input{
     padding: 10px 20px 10px 20px;
     margin: 10px 10px 10px 10px;
+    border-radius: 10px;
 }
 
 .head{
     color: white;
     font-size:x-large;
     font-weight: bold;
+    margin: 20px 0px 20px 0px;
 }
 
+.para{
+    color: white;
+    font-size:medium;
+    font-weight: bold;
+    margin: 10px 0px 20px 0px;
+}
 
 table{
     text-align: center;
@@ -37,8 +45,11 @@ tr:nth-child(even) {
     color: white;
 }
 .subbody{
+    padding: 10px 10px 10px 10px;
+    margin: 50px 50px 50px 50px;
     text-align: center;
     backdrop-filter: blur(10px);
+    
 
 }
 body{
